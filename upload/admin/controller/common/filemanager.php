@@ -77,18 +77,18 @@ class ControllerCommonFileManager extends Controller {
 
 				$data['images'][] = array(
 					'thumb' => '',
-					'name'  => implode(' ', $name),
+					'name'  => htmlspecialchars(implode(' ', $name), ENT_QUOTES, 'UTF-8'),
 					'type'  => 'directory',
-					'path'  => utf8_substr($image, utf8_strlen(DIR_IMAGE)),
+					'path'  => htmlspecialchars(utf8_substr($image, utf8_strlen(DIR_IMAGE)), ENT_QUOTES, 'UTF-8'),
 					'href'  => $this->url->link('common/filemanager', 'user_token=' . $this->session->data['user_token'] . '&directory=' . urlencode(utf8_substr($image, utf8_strlen(DIR_IMAGE . 'catalog/'))) . $url, true)
 				);
 			} elseif (is_file($image)) {
 				$data['images'][] = array(
-					'thumb' => $this->model_tool_image->resize(utf8_substr($image, utf8_strlen(DIR_IMAGE)), 100, 100),
-					'name'  => implode(' ', $name),
+					'thumb' => htmlspecialchars($this->model_tool_image->resize(utf8_substr($image, utf8_strlen(DIR_IMAGE)), 100, 100), ENT_QUOTES, 'UTF-8'),
+					'name'  => htmlspecialchars(implode(' ', $name), ENT_QUOTES, 'UTF-8'),
 					'type'  => 'image',
-					'path'  => utf8_substr($image, utf8_strlen(DIR_IMAGE)),
-					'href'  => $server . 'image/' . utf8_substr($image, utf8_strlen(DIR_IMAGE))
+					'path'  => htmlspecialchars(utf8_substr($image, utf8_strlen(DIR_IMAGE)), ENT_QUOTES, 'UTF-8'),
+					'href'  => $server . 'image/' . urlencode(utf8_substr($image, utf8_strlen(DIR_IMAGE)))
 				);
 			}
 		}
