@@ -88,7 +88,7 @@ class ControllerCommonFileManager extends Controller {
 					'name'  => htmlspecialchars(implode(' ', $name), ENT_QUOTES, 'UTF-8'),
 					'type'  => 'image',
 					'path'  => htmlspecialchars(utf8_substr($image, utf8_strlen(DIR_IMAGE)), ENT_QUOTES, 'UTF-8'),
-					'href'  => $server . 'image/' . urlencode(utf8_substr($image, utf8_strlen(DIR_IMAGE)))
+					'href'  => htmlspecialchars($server . 'image/' . utf8_substr($image, utf8_strlen(DIR_IMAGE)), ENT_QUOTES, 'UTF-8')
 				);
 			}
 		}
