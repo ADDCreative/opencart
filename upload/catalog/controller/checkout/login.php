@@ -61,6 +61,8 @@ class ControllerCheckoutLogin extends Controller {
 			// Unset guest
 			unset($this->session->data['guest']);
 
+			$this->cart->loginRefresh();
+
 			// Default Shipping Address
 			$this->load->model('account/address');
 

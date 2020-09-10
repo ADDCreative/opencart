@@ -28,6 +28,8 @@ class ControllerAccountRegister extends Controller {
 
 			unset($this->session->data['guest']);
 
+			$this->cart->loginRefresh();
+
 			$this->response->redirect($this->url->link('account/success'));
 		}
 
